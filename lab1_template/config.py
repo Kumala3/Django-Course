@@ -1,10 +1,88 @@
-
 from dynaconf import Dynaconf
 
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
-    settings_files=['settings.yaml', '.secrets.yaml'],
+    settings_files=["settings.yaml", ".secrets.yaml"],
 )
+
+
+class DbConfig:
+    """
+    Represents the configuration for the database connection.
+
+    Attributes:
+        user (str): The username for the database connection.
+        password (str): The password for the database connection.
+        host (str): The host address for the database connection.
+        port (int): The port number for the database connection.
+        db (str): The name of the database.
+
+    Methods:
+        db_url(): Constructs the database URL based on the provided configuration.
+
+    """
+
+    def __init__(self):
+        self.user = settings.get("POSTGRES_USER", "postgres")
+        self.password = settings.get("POSTGRES_PASSWORD", None)
+        self.host = settings.get("POSTGRES_HOST", "db")
+        self.port = settings.get("POSTGRES_PORT", 5432)
+        self.db = settings.get("POSTGRES_DB", None)
+
+    def db_url(self) -> str:
+        """
+        Construct the database URL based on the provided configuration.
+
+        If a password is provided, the database URL will include the password in the format:
+        postgres://{user}:{password}@{host}:{port}/{db}
+
+        If no password is provided, the database URL will be in the format:
+        postgres://{user}@{host}:{port}/{db}
+
+        Returns:
+            str: The database URL.
+        """
+        if self.password:
+            return f"postgres://{self.user}:{self.password}@{self.host}:{self.port}/{self.db}"
+        else:
+            return f"postgres://{self.user}@{self.host}:{self.port}/{self.db}"
+
+
+class DjangoConfig:
+    """
+    DjangoConfig configuration class.
+
+    This class holds settings for Django Configuration.
+
+    Attributes
+    ----------
+    SECRET_KEY : str
+        A string representing the secret key for Django App.
+    """
+
+    def __init__(self):
+        self.SECRET_KEY = settings.get("SECRET_KEY", None)
+
+    def retrieve_secret_key(self):
+        """
+        Retrieve the secret key from the settings.
+
+        Returns
+        -------
+        DjangoConfig
+            An instance of DjangoConfig with the retrieved secret key.
+        
+        Raises
+        ------
+        ValueError
+            If the secret key is not found in the settings.
+        """
+        SECRET_KEY = settings.get("SECRET_KEY", None)
+
+        if SECRET_KEY is None:
+            raise ValueError("SECRET_KEY not found in settings.")
+        return DjangoConfig(SECRET_KEY=SECRET_KEY)
+
 
 # `envvar_prefix` = export envvars with `export DYNACONF_FOO=bar`.
 # `settings_files` = Load these files in the order.
