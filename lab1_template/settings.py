@@ -1,17 +1,16 @@
+from .config import DbConfig, DjangoConfig
+import dj_database_url
+
+DB_URL = DbConfig().db_url()
+SECRET_KEY = DjangoConfig().retrieve_secret_key()
+
 # Postgre SQL
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '#Replace it with the generated password#',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    "default": dj_database_url.parse(
+        url=DB_URL, conn_health_checks=True, conn_max_age=600
+    )
 }
 
-INSTALLED_APPS = (
-    'orm',
-)
+INSTALLED_APPS = ("orm",)
 
-SECRET_KEY = 'SECRET KEY for this Django Project'
+SECRET_KEY = SECRET_KEY
