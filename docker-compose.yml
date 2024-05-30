@@ -1,0 +1,13 @@
+version: "3.9"
+
+name: django-lab1
+
+services:
+  db:
+    image: postgres-16
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    env_file:
+      - ".secrets.toml"
