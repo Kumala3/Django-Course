@@ -1,4 +1,10 @@
 default:
+  DEBUG: False
+development:
+  DEBUG: True
+  ALLOWED_HOSTS:
+    - "localhost"
 production:
+  DEBUG: False
   ALLOWED_HOSTS:
     - "server.prod.com"
