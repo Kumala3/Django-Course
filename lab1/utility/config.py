@@ -1,8 +1,10 @@
 from dynaconf import Dynaconf
 
 settings = Dynaconf(
-    envvar_prefix="DYNACONF",
     settings_files=["settings.yaml", ".secrets.yaml"],
+    default_env="default",
+    environments=True,
+    env="development"
 )
 
 
