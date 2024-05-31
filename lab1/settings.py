@@ -1,4 +1,4 @@
-from .config import DbConfig, DjangoConfig
+from utility.config import DbConfig, DjangoConfig
 import dj_database_url
 
 DB_URL = DbConfig().db_url()
@@ -11,6 +11,14 @@ DATABASES = {
     )
 }
 
-INSTALLED_APPS = ("orm",)
+INSTALLED_APPS = (
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "orm",
+)
 
 SECRET_KEY = SECRET_KEY
