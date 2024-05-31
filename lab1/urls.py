@@ -18,9 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from orm.urls import urlpatterns as orm_urls
-
-url_patterns = [
+urlpatterns = [
     path("admin/", admin.site.urls),
-    path("orm/", include(orm_urls))
+    path("orm/", include("orm.urls"))
 ]
