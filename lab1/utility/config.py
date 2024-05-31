@@ -62,26 +62,7 @@ class DjangoConfig:
 
     def __init__(self):
         self.SECRET_KEY = settings.get("SECRET_KEY", None)
-
-    def retrieve_secret_key(self):
-        """
-        Retrieve the secret key from the settings.
-
-        Returns
-        -------
-        DjangoConfig
-            An instance of DjangoConfig with the retrieved secret key.
-        
-        Raises
-        ------
-        ValueError
-            If the secret key is not found in the settings.
-        """
-        SECRET_KEY = settings.get("SECRET_KEY", None)
-
-        if SECRET_KEY is None:
-            raise ValueError("SECRET_KEY not found in settings.")
-        return DjangoConfig(SECRET_KEY=SECRET_KEY)
+        self.DEBUG = settings.get("DEBUG", False)
 
 
 # `envvar_prefix` = export envvars with `export DYNACONF_FOO=bar`.
