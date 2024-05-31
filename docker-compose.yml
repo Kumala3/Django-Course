@@ -17,7 +17,7 @@ services:
   web-app:
     container_name: web-app
     build:
-      context: .
+      context: ./lab1
       dockerfile: Dockerfile
     restart: always
     ports:
