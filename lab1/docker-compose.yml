@@ -5,7 +5,7 @@ name: django-lab1
 services:
   db:
     image: postgres
-    container_name: postgres
+    container_name: postgres-db
     ports:
       - "5432:5432"
     restart: always
@@ -17,7 +17,7 @@ services:
   web-app:
     container_name: web-app
     build:
-      context: ./lab1
+      context: .
       dockerfile: Dockerfile
     restart: always
     ports:

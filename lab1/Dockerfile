@@ -1,4 +1,4 @@
-FROM PYTHON-3.11
+FROM python:3.11
 
 WORKDIR /urs/src/app
 
