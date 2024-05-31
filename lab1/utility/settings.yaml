@@ -1,10 +1,12 @@
-default:
+[default]:
   DEBUG: False
-development:
+
+[development]:
   DEBUG: True
   ALLOWED_HOSTS:
     - "localhost"
-production:
+
+[production]:
   DEBUG: False
   ALLOWED_HOSTS:
     - "server.prod.com"
