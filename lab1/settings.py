@@ -14,12 +14,14 @@ SECRET_KEY = dj_conf.SECRET_KEY
 IS_DEBUG = dj_conf.DEBUG
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# https://docs.djangoproject.com/en/5.0/topics/security/
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run the app with debug turned on in production!
 DEBUG = True
 
 # Database configuration
+# https://docs.djangoproject.com/en/5.0/ref/databases/
 DATABASES = {
     "default": dj_database_url.parse(
         url=DB_URL, conn_health_checks=True, conn_max_age=600
@@ -27,6 +29,7 @@ DATABASES = {
 }
 
 # Application configuration
+# https://docs.djangoproject.com/en/5.0/ref/applications/
 INSTALLED_APPS = (
     "django.contrib.admin",
     "django.contrib.auth",
@@ -38,6 +41,7 @@ INSTALLED_APPS = (
 )
 
 # Middleware configuration
+# https://docs.djangoproject.com/en/5.0/ref/middleware/
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -60,6 +64,7 @@ ALLOWED_HOSTS = [
 ]
 
 # Basic Template configuration
+# https://docs.djangoproject.com/en/5.0/howto/overriding-templates/
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
