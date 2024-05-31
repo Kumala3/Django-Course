@@ -46,6 +46,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Root config to all URLs within an application
+ROOT_URLCONF = "urls"
+
+# List of allowed hosts which can use the Django app
+ALLOWED_HOSTS = ["localhost", ]
+
 # Basic Template configuration
 TEMPLATES = [
     {
