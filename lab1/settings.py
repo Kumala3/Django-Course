@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from utility.config import DbConfig, DjangoConfig
 import dj_database_url
 
@@ -46,11 +48,16 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 # Root config to all URLs within an application
 ROOT_URLCONF = "urls"
 
 # List of allowed hosts which can use the Django app
-ALLOWED_HOSTS = ["localhost", ]
+ALLOWED_HOSTS = [
+    "localhost",
+]
 
 # Basic Template configuration
 TEMPLATES = [
@@ -71,10 +78,8 @@ TEMPLATES = [
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = "static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
