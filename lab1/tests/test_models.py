@@ -24,6 +24,12 @@ class TestUser(TestCase):
         self.assertEqual(self.user.last_name, "Doe")
         self.assertEqual(self.user.phone_number, "754262432")
         self.assertEqual(self.user.residence, "Nairobi")
+        self.assertEqual(self.user.email, "doejohn22@example.com")
+        self.assertEqual(self.user.age, 36)
+        self.assertEqual(self.user.is_active, True)
+        self.assertEqual(self.user.dob, "1994-04-13")
+        self.assertEqual(self.user.created_at, timezone.now())
+        self.assertEqual(self.user.updated_at, timezone.now())
 
     def test_user_str(self):
         self.assertEqual(
