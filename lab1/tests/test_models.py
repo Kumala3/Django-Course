@@ -19,17 +19,40 @@ class TestUser(TestCase):
             updated_at=timezone.now(),
         )
 
-    def test_user_creation(self):
+    def test_user_first_name(self):
         self.assertEqual(self.user.first_name, "John")
+
+    def test_user_last_name(self):
         self.assertEqual(self.user.last_name, "Doe")
+
+    def test_user_phone_number(self):
         self.assertEqual(self.user.phone_number, "754262432")
+
+    def test_user_residence(self):
         self.assertEqual(self.user.residence, "Nairobi")
+
+    def test_user_email(self):
         self.assertEqual(self.user.email, "doejohn22@example.com")
+
+    def test_user_age(self):
         self.assertEqual(self.user.age, 36)
+
+    def test_user_is_active(self):
         self.assertEqual(self.user.is_active, True)
+
+    def test_user_dob(self):
         self.assertEqual(self.user.dob, "1994-04-13")
-        self.assertEqual(self.user.created_at, timezone.now())
-        self.assertEqual(self.user.updated_at, timezone.now())
+
+    def test_user_created_at(self):
+        # Using almostEqual to account for slight differences in time
+        self.assertAlmostEqual(
+            self.user.created_at, timezone.now(), delta=timezone.timedelta(seconds=1)
+        )
+
+    def test_user_updated_at(self):
+        self.assertAlmostEqual(
+            self.user.updated_at, timezone.now(), delta=timezone.timedelta(seconds=1)
+        )
 
     def test_user_str(self):
         self.assertEqual(
