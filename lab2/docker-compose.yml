@@ -4,7 +4,7 @@ name: lab2
 
 services:
   postgres-db:
-    image: postgres:13
+    image: postgres:16-alpine
     container_name: postgres-db
     env_file:
       - ".env"

@@ -9,6 +9,10 @@ dj_conf = DjangoConfig()
 SECRET_KEY = dj_conf.SECRET_KEY
 db_url = db_conf.db_url()
 
+# SECURITY WARNING: keep the secret key used in production secret!
+# https://docs.djangoproject.com/en/5.0/topics/security/
+SECRET_KEY = SECRET_KEY
+
 # Database configuration
 # https://docs.djangoproject.com/en/5.0/ref/databases/
 DATABASES = {
@@ -29,6 +33,18 @@ INSTALLED_APPS = (
     "crud",
 )
 
-# SECURITY WARNING: keep the secret key used in production secret!
-# https://docs.djangoproject.com/en/5.0/topics/security/
-SECRET_KEY = SECRET_KEY
+# Middleware configuration
+# https://docs.djangoproject.com/en/5.0/ref/middleware/
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
