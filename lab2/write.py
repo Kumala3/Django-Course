@@ -47,3 +47,34 @@ def write_instructors():
     )
     instructor_peter.save()
     print("Instructor objects all saved... ")
+
+
+def write_courses():
+    # Add Courses
+    course_cloud_app = Course(
+        name="Cloud Application Development with Database",
+        description="Develop and deploy application on cloud",
+    )
+
+    course_cloud_app.save()
+    course_python = Course(
+        name="Introduction to Python",
+        description="Learn core concepts of Python and obtain hands-on "
+        "experience via a capstone project",
+    )
+    course_python.save()
+
+    print("Course objects all saved... ")
+
+
+def write_lessons():
+    # Add lessons
+    lesson_1 = Lesson(title="Lesson 1", content="Object-relational mapping project")
+    lesson_1.save()
+
+    lesson_2 = Lesson(title="Lesson 2", content="Django full stack project")
+    lesson_2.save()
+
+    print("Lesson objects all saved... ")
+
+
