@@ -27,7 +27,7 @@ class DbConfig:
     def __init__(self):
         self.user = settings.get("POSTGRES_USER", "postgres")
         self.password = settings.get("POSTGRES_PASSWORD", None)
-        self.host = settings.get("POSTGRES_HOST", "db")
+        self.host = settings.get("POSTGRES_HOST", None)
         self.port = settings.get("POSTGRES_PORT", 5432)
         self.db = settings.get("POSTGRES_DB", None)
 
