@@ -11,3 +11,11 @@ class User(models.Model):
 
     def __str__(self):
         return f"{self.username} has been created with next email: {self.email}"
+
+
+class Instructor(User):
+    position = models.CharField(max_length=100, null=False)
+    department = models.CharField(max_length=100, null=False)
+
+    def __str__(self):
+        return f"{self.username} is an {self.position} in the {self.department} department"
