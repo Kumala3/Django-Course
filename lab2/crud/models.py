@@ -83,6 +83,6 @@ class Enrollment(models.Model):
     # Add a course foreign key
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     # Enrollment date
-    date_enrolled = models.DateField(default=timezone.now())
+    date_enrolled = models.DateField(default=timezone.now)
     # Enrollment mode
     mode = models.CharField(max_length=5, choices=COURSE_MODES, default=AUDIT)
