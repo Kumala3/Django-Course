@@ -62,3 +62,23 @@ class Lesson(models.Model):
 
     def __str__(self):
         return f"Lesson title: {self.title}; Course: {self.course};"
+
+
+# Enrollment model as a lookup table with additional enrollment info
+class Enrollment(models.Model):
+    AUDIT = "audit"
+    HONOR = "honor"
+
+    COURSE_MODES = [
+        (AUDIT, "Audit"),
+        (HONOR, "Honor"),
+    ]
+
+    # Add a learner foreign key
+    learner = models.ForeignKey(Learner, on_delete=models.CASCADE)
+    # Add a course foreign key
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    # Enrollment date
+    date_enrolled = models.DateField(default=timezone.now())
+    # Enrollment mode
+    mode = models.CharField(max_length=5, choices=COURSE_MODES, default=AUDIT)
