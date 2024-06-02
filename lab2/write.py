@@ -71,10 +71,17 @@ def write_courses():
 
 def write_lessons():
     # Add lessons
-    lesson_1 = Lesson(title="Lesson 1", content="Object-relational mapping project")
+    course_python = Course(
+        name="Introduction to Python",
+        description="Learn core concepts of Python and obtain hands-on "
+        "experience via a capstone project",
+    )
+    course_python.save()
+
+    lesson_1 = Lesson(title="Lesson 1", content="Object-relational mapping project", course=course_python)
     lesson_1.save()
 
-    lesson_2 = Lesson(title="Lesson 2", content="Django full stack project")
+    lesson_2 = Lesson(title="Lesson 2", content="Django full stack project", course=course_python)
     lesson_2.save()
 
     print("Lesson objects all saved... ")
