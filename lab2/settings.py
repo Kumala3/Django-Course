@@ -13,6 +13,14 @@ db_url = db_conf.db_url()
 # https://docs.djangoproject.com/en/5.0/topics/security/
 SECRET_KEY = SECRET_KEY
 
+# SECURITY WARNING: Don't run the app with debug turned on in production!
+DEBUG = True
+
+# List of allowed hosts which can use the Django app
+ALLOWED_HOSTS = [
+    "localhost",
+]
+
 # Database configuration
 # https://docs.djangoproject.com/en/5.0/ref/databases/
 DATABASES = {
@@ -43,6 +51,24 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+# Basic Template configuration
+# https://docs.djangoproject.com/en/5.0/howto/overriding-templates/
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
 ]
 
 # Default primary key field type
