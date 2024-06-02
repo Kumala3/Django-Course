@@ -1,20 +1,21 @@
 # Django specific settings
 import os
 from datetime import date
-
-from crud.models import User, Learner, Course, Enrollment, Instructor, Lesson
-
-from django.core.wsgi import get_wsgi_application
+import django
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+django.setup()
 
-application = get_wsgi_application()
+try:
+    from crud.models import User, Learner, Course, Instructor, Lesson
+except ImportError:
+    print("Unable to import models from crud.models. Please check the path to the models.")
 
 
 def write_instructors():
     # Add instructors
     # Create a user
-    user_john = User(first_name="John", last_name="Doe", dob=date(1962, 7, 16))
+    user_john = User(firstname="John", lastname="Doe", dob=date(1962, 7, 16))
     user_john.save()
     instructor_john = Instructor(full_time=True, total_learners=30050)
     # Update the user reference of instructor_john to be user_john
@@ -22,8 +23,8 @@ def write_instructors():
     instructor_john.save()
 
     instructor_yan = Instructor(
-        first_name="Yan",
-        last_name="Luo",
+        firstname="Yan",
+        lastname="Luo",
         dob=date(1962, 7, 16),
         full_time=True,
         total_learners=30050,
@@ -31,8 +32,8 @@ def write_instructors():
     instructor_yan.save()
 
     instructor_joy = Instructor(
-        first_name="Joy",
-        last_name="Li",
+        firstname="Joy",
+        lastname="Li",
         dob=date(1992, 1, 2),
         full_time=False,
         total_learners=10040,
@@ -40,8 +41,8 @@ def write_instructors():
     instructor_joy.save()
 
     instructor_peter = Instructor(
-        first_name="Peter",
-        last_name="Chen",
+        firstname="Peter",
+        lastname="Chen",
         dob=date(1982, 5, 2),
         full_time=True,
         total_learners=2002,
@@ -82,8 +83,8 @@ def write_lessons():
 def write_learners():
     # Add Learners
     learner_james = Learner(
-        first_name="James",
-        last_name="Smith",
+        firstname="James",
+        lastname="Smith",
         dob=date(1982, 7, 16),
         occupation="data_scientist",
         social_link="https://www.linkedin.com/james/",
@@ -91,8 +92,8 @@ def write_learners():
     learner_james.save()
 
     learner_mary = Learner(
-        first_name="Mary",
-        last_name="Smith",
+        firstname="Mary",
+        lastname="Smith",
         dob=date(1991, 6, 12),
         occupation="dba",
         social_link="https://www.facebook.com/mary/",
@@ -100,8 +101,8 @@ def write_learners():
     learner_mary.save()
 
     learner_robert = Learner(
-        first_name="Robert",
-        last_name="Lee",
+        firstname="Robert",
+        lastname="Lee",
         dob=date(1999, 1, 2),
         occupation="student",
         social_link="https://www.facebook.com/robert/",
@@ -109,8 +110,8 @@ def write_learners():
     learner_robert.save()
 
     learner_david = Learner(
-        first_name="David",
-        last_name="Smith",
+        firstname="David",
+        lastname="Smith",
         dob=date(1983, 7, 16),
         occupation="developer",
         social_link="https://www.linkedin.com/david/",
@@ -118,8 +119,8 @@ def write_learners():
     learner_david.save()
 
     learner_john = Learner(
-        first_name="John",
-        last_name="Smith",
+        firstname="John",
+        lastname="Smith",
         dob=date(1986, 3, 16),
         occupation="developer",
         social_link="https://www.linkedin.com/john/",
@@ -127,8 +128,8 @@ def write_learners():
     learner_john.save()
 
     learner_emily = Learner(
-        first_name="Emily",
-        last_name="Johnson",
+        firstname="Emily",
+        lastname="Johnson",
         dob=date(1995, 9, 20),
         occupation="student",
         social_link="https://www.linkedin.com/emily/",
@@ -136,8 +137,8 @@ def write_learners():
     learner_emily.save()
 
     learner_michael = Learner(
-        first_name="Michael",
-        last_name="Brown",
+        firstname="Michael",
+        lastname="Brown",
         dob=date(1990, 4, 10),
         occupation="developer",
         social_link="https://www.linkedin.com/michael/",
