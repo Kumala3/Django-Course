@@ -1,9 +1,10 @@
 # Django specific settings
 import os
-from crud.models import User, Learner, Course, Enrollment, Instructor, Lesson
 from datetime import date
-from django.core.wsgi import get_wsgi_application
 
+from crud.models import User, Learner, Course, Enrollment, Instructor, Lesson
+
+from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 
@@ -78,3 +79,76 @@ def write_lessons():
     print("Lesson objects all saved... ")
 
 
+def write_learners():
+    # Add Learners
+    learner_james = Learner(
+        first_name="James",
+        last_name="Smith",
+        dob=date(1982, 7, 16),
+        occupation="data_scientist",
+        social_link="https://www.linkedin.com/james/",
+    )
+    learner_james.save()
+
+    learner_mary = Learner(
+        first_name="Mary",
+        last_name="Smith",
+        dob=date(1991, 6, 12),
+        occupation="dba",
+        social_link="https://www.facebook.com/mary/",
+    )
+    learner_mary.save()
+
+    learner_robert = Learner(
+        first_name="Robert",
+        last_name="Lee",
+        dob=date(1999, 1, 2),
+        occupation="student",
+        social_link="https://www.facebook.com/robert/",
+    )
+    learner_robert.save()
+
+    learner_david = Learner(
+        first_name="David",
+        last_name="Smith",
+        dob=date(1983, 7, 16),
+        occupation="developer",
+        social_link="https://www.linkedin.com/david/",
+    )
+    learner_david.save()
+
+    learner_john = Learner(
+        first_name="John",
+        last_name="Smith",
+        dob=date(1986, 3, 16),
+        occupation="developer",
+        social_link="https://www.linkedin.com/john/",
+    )
+    learner_john.save()
+
+    learner_emily = Learner(
+        first_name="Emily",
+        last_name="Johnson",
+        dob=date(1995, 9, 20),
+        occupation="student",
+        social_link="https://www.linkedin.com/emily/",
+    )
+    learner_emily.save()
+
+    learner_michael = Learner(
+        first_name="Michael",
+        last_name="Brown",
+        dob=date(1990, 4, 10),
+        occupation="developer",
+        social_link="https://www.linkedin.com/michael/",
+    )
+    learner_michael.save()
+    print("Learner objects all saved... ")
+
+
+if __name__ == "__main__":
+    write_instructors()
+    write_courses()
+    write_lessons()
+    write_learners()
+    print("Data population completed... ")
