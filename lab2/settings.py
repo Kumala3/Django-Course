@@ -34,6 +34,9 @@ DATABASES = {
     )
 }
 
+# Root config to all URLs within an application
+ROOT_URLCONF = "urls"
+
 # Installed apps definition
 # https://docs.djangoproject.com/en/5.0/ref/applications/
 INSTALLED_APPS = (
