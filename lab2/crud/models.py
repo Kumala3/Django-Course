@@ -11,7 +11,7 @@ class User(models.Model):
     updated_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.username} has been created with next email: {self.email}"
+        return f"{self.firstname} has been created with id {self.user_id}"
 
     class Meta:
         db_table = "users"
