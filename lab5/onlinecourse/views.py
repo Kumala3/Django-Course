@@ -7,4 +7,3 @@ from django.views import generic
 from django.http import Http404
 
 # Create your views here.
-
