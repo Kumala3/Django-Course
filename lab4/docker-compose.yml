@@ -1,0 +1,24 @@
+name: lab4-adminapp
+
+services:
+  adminapp:
+    image: lab4-adminapp
+    container_name: lab4-adminapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    env_file:
+      - ".env"
+    depends_on:
+      - lab4-db
+
+  lab4-db:
+    image: postgres:16-alpine
+    container_name: lab4-db
+    ports:
+      - "5432:5432"
+    env_file:
+      - ".env"
+
