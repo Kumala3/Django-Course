@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.http import HttpResponse, HttpRequest
 
-# Create your views here.
+
+class SkinsListView:
+    def get(self, request: HttpRequest):
+        template = "<html>" "Full list of Fortnite skins in 2023" "</html>"
+
+        return HttpResponse(content=template)
