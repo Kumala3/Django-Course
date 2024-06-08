@@ -5,5 +5,12 @@ from .models import Course, Lesson, Enrollment
 from django.urls import reverse
 from django.views import generic
 from django.http import Http404
+from django.views import View
 
-# Create your views here.
+
+class TopCoursesList(View):
+    def get(self, request):
+        context = {}
+        courses = Course.objects.order_by("-total_enrollment")[:10]
+        context["course_list"] = courses
+        return render(request, "onlinecourse/course_list.html", context)
