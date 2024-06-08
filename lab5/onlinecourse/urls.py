@@ -1,13 +1,10 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from . import views
+from .views import TopCoursesList
 
 app_name = "onlinecourse"
+
 urlpatterns = (
     [
-        # Add path here
+        path("top-courses/", TopCoursesList.as_view(), name="popular_course_list")
     ]
-    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 )
