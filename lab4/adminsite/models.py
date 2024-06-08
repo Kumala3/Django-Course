@@ -7,7 +7,6 @@ except Exception:
     sys.exit()
 
 from django.conf import settings
-import uuid
 
 
 # Instructor model

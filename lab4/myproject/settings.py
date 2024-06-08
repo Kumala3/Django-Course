@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+from myproject.utility.config import DbConfig, DjangoConfig
+import dj_database_url
+
+dj_conf = DjangoConfig()
+db_conf = DbConfig()
+
+SECRET_KEY = dj_conf.SECRET_KEY
+db_url = db_conf.db_url()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's+skk-ba!=wdg9$f495be9b@z5&0r4-g=c0xe&&^gomc1mg801'
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,14 +85,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 #Postgres
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '#Replace it with generated PostgreSQL password#',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    "default": dj_database_url.parse(
+        url=db_url, conn_max_age=600, conn_health_checks=True
+    )
 }
 
 
