@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     {% load static %}
 </head>
-<body>
-<!-- Add your template there -->
 
+<body style="background: #b3dbe3;">
+    <div>
+        <h1 style="color: #0165f8">{{ course.name }}</h1>
+        <h3>{{ course.description }}</h3>
+        <h2>Lessons: </h2>
+        {% for lesson in course.lesson_set.all %}
+        <div>
+            <h5>Lesson {{ lesson.order }} : {{ lesson.title }}</h5>
+            <p>{{ lesson.content }}</p>
+        </div>
+        {% endfor %}
+    </div>
 </body>
+
 </html>
