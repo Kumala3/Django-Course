@@ -1,12 +1,9 @@
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from . import views
+from .views import CourseListView, CourseDetailsView, EnrollView
 
-app_name = 'onlinecourse'
+app_name = "onlinecourse"
 urlpatterns = [
-    # Add path here
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
- + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
+    path("", CourseListView.as_view(), name="popular_course_list"),
+    path("course-details/", CourseDetailsView.as_view(), name="course_details"),
+    path("course/<int:pk>/enroll/", EnrollView.as_view(), "enroll"),
+]
