@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<link>
     <meta charset="UTF-8">
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'onlinecourse/course.css' %}" </link>
 </head>
 
 <body style="background: #b3dbe3;">
     <div>
-        <h1 style="color: #0165f8">{{ course.name }}</h1>
-        <h3>{{ course.description }}</h3>
+        <div class="card">
+            <h1 style="color: #0165f8">{{ course.name }}</h1>
+            <h3>{{ course.description }}</h3>
+        </div>
         <h2>Lessons: </h2>
         {% for lesson in course.lesson_set.all %}
-        <div>
+        <div class="card">
             <h5>Lesson {{ lesson.order }} : {{ lesson.title }}</h5>
             <p>{{ lesson.content }}</p>
         </div>
