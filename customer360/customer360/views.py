@@ -21,13 +21,18 @@ class CreateCustomerView(View):
         email = request.POST["email"]
         phone = request.POST["phone"]
         address = request.POST["address"]
+        social_media = request.POST["social_media"]
 
         customer = Customer.objects.create(
-            name=name, email=email, phone=phone, address=address
+            name=name,
+            email=email,
+            phone=phone,
+            address=address,
+            social_media=social_media,
         )
         customer.save()
-        msg = "Customer created successfully"
-        return render(request, "add.html", {"msg": msg})
+        context = {"msg": "Customer created successfully"}
+        return render(request, "add.html", context)
 
 
 class SummaryView(View):

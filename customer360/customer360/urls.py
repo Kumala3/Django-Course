@@ -19,7 +19,7 @@ from django.urls import path
 from .views import HomeView, CreateCustomerView, SummaryView, InteractView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
     path("", HomeView.as_view(), name="home"),
     path("create/", CreateCustomerView.as_view(), name="create_customer"),
     path("summary/", SummaryView.as_view(), name="summary"),

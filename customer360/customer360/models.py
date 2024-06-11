@@ -7,6 +7,7 @@ class Customer(models.Model):
     email = models.EmailField(max_length=255)
     phone = models.CharField(max_length=20)
     address = models.TextField()
+    social_media = models.CharField(max_length=100, blank=True)
 
     def __str__(self) -> str:
         return f"The customer {self.name} has been created successfully. Customer_id: {self.customer_id}"
@@ -18,6 +19,7 @@ class Interaction(models.Model):
         ("sms", "SMS"),
         ("email", "Email"),
         ("letter", "Letter"),
+        ("social_media", "Social Media"),
     ]
 
     DIRECTION_CHOICES = [
