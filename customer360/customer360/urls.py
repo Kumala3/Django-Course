@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import HomeView, CreateCustomerView, SummaryView, InteractView
+from .views import HomeView, CreateCustomerView, SummaryView, InteractView, ClearCookiesView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     path("create/", CreateCustomerView.as_view(), name="create_customer"),
     path("summary/", SummaryView.as_view(), name="summary"),
     path("interact/<int:customer_id>/", InteractView.as_view(), name="interact"),
+    path("clear-cookies/", ClearCookiesView.as_view(), name="clear_cookies"),
 ]

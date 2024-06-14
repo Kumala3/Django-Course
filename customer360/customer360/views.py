@@ -1,11 +1,11 @@
 from datetime import date, timedelta
 
 from django.shortcuts import render
-from django.db.models import Count
 from django.views import View
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
 
 from .models import Customer, Interaction
+from .forms.customer_form import CustomerForm
 
 
 class HomeView(View):
@@ -16,23 +16,24 @@ class HomeView(View):
 
 
 class CreateCustomerView(View):
-    def post(self, request: HttpRequest):
-        name = request.POST["name"]
-        email = request.POST["email"]
-        phone = request.POST["phone"]
-        address = request.POST["address"]
-        social_media = request.POST["social_media"]
+    def get(self, request: HttpRequest):
+        form = CustomerForm()
+        return render(request, "add.html", {"form": form})
 
-        customer = Customer.objects.create(
-            name=name,
-            email=email,
-            phone=phone,
-            address=address,
-            social_media=social_media,
-        )
-        customer.save()
-        context = {"msg": "Customer created successfully"}
-        return render(request, "add.html", context)
+    def post(self, request: HttpRequest):
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            context = {"msg": "Customer created successfully"}
+            return render(request, "add.html", context)
+
+
+class ClearCookiesView(View):
+    def get(self, request: HttpRequest):
+        response = HttpResponse("All cookies cleared successfully")
+        for key in request.COOKIES:
+            response.delete_cookie(key)
+        return response
 
 
 class SummaryView(View):
